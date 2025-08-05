@@ -39,15 +39,3 @@ CREATE TABLE enrollments (
     PRIMARY KEY (student_id, course_id)
 );
 
----
-
-## Project Structure
-graphql
-Copy code
-studcourse_dbms/
-├── main.py          # Python script to test CRUD
-├── db.py            # PostgreSQL connection config
-├── crud.py          # Python functions for CRUD
-├── schema.sql       # SQL schema (students, courses, enrollments)
-└── README.md        # Project documentation
-
