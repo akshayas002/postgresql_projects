@@ -39,6 +39,8 @@ CREATE TABLE enrollments (
     PRIMARY KEY (student_id, course_id)
 );
 
+---
+
 ## Project Structure
 graphql
 Copy code
