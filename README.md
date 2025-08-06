@@ -1,41 +1,82 @@
-# 📘 Student-Course DBMS with PostgreSQL
+# 🎓 Student Course Management System — PostgreSQL Project
 
-This is a simple PostgreSQL-based **Database Management System** project that manages **students and their enrolled courses**. It includes SQL schema creation, **CRUD operations**, **JOIN queries**, **Views**, and **Aggregation queries**, along with Python integration using `psycopg2`.
-
----
-
-## 🗃️ Features
-
-- 🧑 Manage Students
-- 📚 Manage Courses
-- 🧾 Enroll students in courses (many-to-many)
-- ✅ Full CRUD (Create, Read, Update, Delete)
-- 🔗 JOINs between students and courses
-- 📊 Aggregation queries (e.g., average age, course count)
-- 👓 Views for simplified access
+A PostgreSQL-based database management system to manage students, courses, and enrollments with added functionality for **CRUD operations**, **Joins**, **Views**, **Aggregation**, and **Advanced SQL queries**.
 
 ---
 
-## 🏗️ Database Schema
+## 📌 Project Description
 
-```sql
--- students table
-CREATE TABLE students (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(100),
-    age INT
-);
+This project implements a relational database for a student-course enrollment system using PostgreSQL. It models three primary entities: `students`, `courses`, and `enrollments`. The database captures student data, course offerings, and enrollment/grade records.
 
--- courses table
-CREATE TABLE courses (
-    id SERIAL PRIMARY KEY,
-    course_name VARCHAR(100)
-);
+It's designed to practice and demonstrate:
 
--- enrollments table (many-to-many relationship)
-CREATE TABLE enrollments (
-    student_id INT REFERENCES students(id),
-    course_id INT REFERENCES courses(id),
-    PRIMARY KEY (student_id, course_id)
-);
+- **Relational schema design**
+- **Complex queries with joins and aggregations**
+- **Views and triggers**
+- **PostgreSQL JSONB & ARRAY usage**
+- **Data manipulation through CRUD**
+- **Advanced Queries**
+
+---
+
+## 🧱 Database Schema
+
+### `students` table
+
+| Column     | Type     | Description              |
+|------------|----------|--------------------------|
+| sid        | SERIAL   | Primary key              |
+| name       | VARCHAR  | Student's name           |
+| age        | INT      | Student's age            |
+| dept       | VARCHAR  | Department               |
+| details    | JSONB    | Additional info (e.g. hobbies, year) |
+
+---
+
+### `courses` table
+
+| Column         | Type         | Description                        |
+|----------------|--------------|------------------------------------|
+| cid            | SERIAL       | Primary key                        |
+| cname          | VARCHAR      | Course title                       |
+| credits        | INT          | Credit value                       |
+| prerequisites  | INT[]        | Array of prerequisite course IDs   |
+| metadata       | JSONB        | Additional course metadata         |
+
+---
+
+### `enroll` table
+
+| Column     | Type   | Description                                 |
+|------------|--------|---------------------------------------------|
+| enroll_id  | SERIAL | Primary key                                 |
+| sid        | INT    | Foreign key to students                     |
+| cid        | INT    | Foreign key to courses                      |
+| grade      | INT    | Grade received                              |
+
+---
+
+## ✍️ CRUD Operations
+
+- **Create**: Insert new student, course, or enrollment records
+- **Read**: View student/course details, search by criteria
+- **Update**: Modify student age, course details, grades, etc.
+- **Delete**: Remove enrollments or student/course records
+
+---
+## 📚 Learning Outcomes
+
+- PostgreSQL table design with **JSONB** and **arrays**
+- CRUD operations through SQL
+- Writing and optimizing **JOIN**, **VIEW**, and **AGGREGATE** queries
+- Creating and using **triggers**
+- Real-world **database modeling**
+
+---
+
+## 🛠️ Technologies Used
+
+- PostgreSQL  
+- SQL (Advanced)  
+- Git / GitHub
 
